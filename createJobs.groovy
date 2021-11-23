@@ -1,8 +1,14 @@
-pipelineJob('pipelineJob') {
+pipelineJob('buildJob') {
     definition {
-        cps {
-            script(readFileFromWorkspace('pipelineJob.groovy'))
-            sandbox()
+        cpsScm {
+            scm {
+                git {
+                    remote {
+                        url 'https://github.com/Apri34/spring-boot-example.git'
+                    }
+                    branch 'master'
+                }
+            }
         }
     }
 }
